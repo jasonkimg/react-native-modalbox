@@ -9,6 +9,7 @@ var {
   Animated,
   TouchableWithoutFeedback,
   Dimensions,
+  TouchableOpacity,
   Easing,
   BackAndroid,
   BackHandler,
@@ -462,10 +463,15 @@ var ModalBox = createReactClass({
 
     var content = (
       <View importantForAccessibility="yes" accessibilityViewIsModal={true} style={[styles.transparent, styles.absolute]} pointerEvents={'box-none'}>
-        <View style={{ flex: 1 }} pointerEvents={'box-none'} onLayout={this.onContainerLayout}>
-          {visible && this.renderBackdrop()}
-          {visible && this.renderContent()}
-        </View>
+        <TouchableOpacity style={{flex:1}} onPress={()=> this.close()}
+       //this.setState({isAnimateClose:false})
+       //this.setState({isOpen:false})}
+     >
+          <View style={{ flex: 1 }} pointerEvents={'box-none'} onLayout={this.onContainerLayout}>
+            {visible && this.renderBackdrop()}
+            {visible && this.renderContent()}
+          </View>
+      </TouchableOpacity>
       </View>
     )
 
